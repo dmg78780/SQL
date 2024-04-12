@@ -53,3 +53,5 @@ SELECT Product
 FROM BIT_DB.FebSales
 WHERE location like '%Los Angeles%'
 GROUP BY Product;
+
+
