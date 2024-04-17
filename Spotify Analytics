@@ -60,3 +60,18 @@ SELECT artist_name
 FROM Spotifydata
 GROUP BY artist_name, track_name
 ORDER BY popularity desc LIMIT 10;
+
+--What's the average popularity for the artists?
+--For every artist with an average popularity of 90 or above, what is their average popularity and label them as a "Top Star"?
+WITH popularity_average_CTE AS (
+SELECT s.artist_name
+,AVG(s.popularity) AS average_popularity
+FROM Spotifydata s
+GROUP BY s.artist_name
+)
+
+SELECT artist_name
+,average_popularity
+,'Top Star' AS tag
+FROM popularity_average_CTE
+WHERE average_popularity>=90;
