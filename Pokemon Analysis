@@ -1,0 +1,37 @@
+#All data comes from this table: https://gist.github.com/pamelafox/26b9357c6120d3d0d27c2b90c950e8c6
+
+#Organize Pokemon into attack levels
+SELECT 
+  CASE
+    WHEN Attack > 100 THEN "High"
+    WHEN Attack > 75 THEN "Medium"
+    WHEN Attack > 50 THEN "Low"
+    WHEN Attack > 25 THEN "Very Low"
+  ELSE "None"
+END AS attack_level,
+COUNT(*) AS attack_count
+FROM 
+  pokemon
+GROUP BY 
+  attack_level;
+
+#What is the average, maximum, and minimum attack, defense and hp levels?
+SELECT avg(hp), 
+  avg(attack), 
+  avg(defense), 
+  min(hp), 
+  min(attack), 
+  min(defense), 
+  max(hp), 
+  max(attack), 
+  max(defense)
+FROM pokemon;
+
+SELECT name, 
+  attack, 
+defense
+FROM pokemon
+WHERE generation >3
+  AND attack <75
+  AND defense >75
+ORDER by name asc;
