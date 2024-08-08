@@ -1,0 +1,44 @@
+#CREATE a table to store the data.
+INSERT a few example rows in the table.
+Use an UPDATE to emulate what happens when you edit data in the app.
+Use a DELETE to emulate what happens when you delete data in the app.
+
+CREATE TABLE books (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT,
+    author TEXT,
+    year_pub INTEGER );
+    
+CREATE TABLE person (
+    person_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    quantity_read INTEGER,
+    fav_genre TEXT );
+     
+    INSERT INTO books ("title", "author", "year_pub") VALUES ("Funny Story", "Emily Henry", "2024");
+    INSERT INTO books ("title", "author", "year_pub") VALUES ("The Paris Apartment", "Lucy Foley", "2022");
+    INSERT INTO books ("title", "author", "year_pub") VALUES ("Insurgent", "Veronica Roth", "2012");
+    INSERT INTO books ("title", "author", "year_pub") VALUES ("Eleanor in the Village", "Jan Jarboe Russell", "2021");
+    INSERT INTO books ("title", "author", "year_pub") VALUES ("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", "1997");   
+    INSERT INTO person ("name", "quantity_read", "fav_genre") VALUES ("Bailee English", "14", "fantansy");
+    INSERT INTO person ("name", "quantity_read", "fav_genre") VALUES ("Graham Bowman", "26", "horror");
+    INSERT INTO person ("name", "quantity_read", "fav_genre") VALUES ("Elyse Rice", "22", "fiction");
+    INSERT INTO person ("name", "quantity_read", "fav_genre") VALUES ("Carl Rollins", "4", "romance");
+    INSERT INTO person ("name", "quantity_read", "fav_genre") VALUES ("Cleo Castillo", "10", "thriller");
+
+SELECT books.title, books.author, person.name, person.quantity_read, person.fav_genre
+FROM books
+JOIN person
+ON books.id = person.person_id
+WHERE person.quantity_read >10
+ORDER BY person.quantity_read asc;
+
+UPDATE person SET fav_genre ="non-fiction"
+WHERE person_id =1;
+
+SELECT * FROM person;
+
+DELETE FROM person
+WHERE quantity_read >= 20;
+
+SELECT * FROM person;
